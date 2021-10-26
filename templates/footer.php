@@ -9,6 +9,10 @@
       const elems = document.querySelectorAll('.sidenav');
       const instances = M.Sidenav.init(elems, {});
     });
+    document.addEventListener('DOMContentLoaded', function() {
+      const elems = document.querySelectorAll('select');
+      const instances = M.FormSelect.init(elems, {});
+    });
 
     const today = new Date();
     document.querySelector('.copyright').textContent = today.getFullYear();

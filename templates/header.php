@@ -1,3 +1,19 @@
+<?php 
+
+  session_start();
+
+  if($_SERVER['QUERY_STRING'] == 'noname'){
+    unset($_SESSION['name']);
+  }
+
+  $name = $_SESSION['name'] ?? 'Guest';
+
+  // get cookie
+  $gender_cookie = $_COOKIE['gender'] ?? '';
+  $gender = $gender_cookie ? "($gender_cookie)" : '';
+
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +60,10 @@
   <nav class="white z-depth-0">
     <div class="container">
       <a href="index.php" class="brand-logo brand-text">PizzaTime</a>
-      <ul id="nav-mobile" class="right hide-on-small-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">       
+        <li>
+          <a class="grey-text center" href="login.php">Hello <?php echo htmlspecialchars($name) . " " . htmlspecialchars($gender); ?></a>
+        </li>
         <li><a href="add.php" class="btn brand z-depth-0">Add A Pizza</a></li>
       </ul>
 
@@ -52,6 +71,9 @@
         <i class="material-icons">menu</i>
       </a>
       <ul class="sidenav mobile-nav grey lighten-2" id="mobile-menu">
+        <li>
+          <a class="grey-text center" href="login.php">Hello <?php echo htmlspecialchars($name) . " " . htmlspecialchars($gender); ?></a>
+        </li>
         <li><a href="add.php" class="btn brand z-depth-0">Add A Pizza</a></li>
       </ul>
     </div>
